@@ -6,47 +6,57 @@ const Post = ({ data, url }) => {
   const { id } = useParams();
   const post = data.find((p) => p.id === +id);
 
-  const [comments , setComments] = useState([])
+  const [comments, setComments] = useState([]);
 
-  const divStyle ={width:" 60%",
-    height:" 80%",
+  const divStyle = {
+    width: " 60%",
+    height: " 80%",
     border: "9px gold solid",
     margin: "auto",
     padding: "1em",
-  textAlign: "center"
-  }
+    textAlign: "center",
+  };
 
-let commentUrl = `${url}/${id}/comments`
+  let commentUrl = `${url}/${id}/comments`;
 
   useEffect(() => {
     try {
       const getComment = async () => {
-        const response = await fetch(commentUrl)
-        const data = await response.json()
+        const response = await fetch(commentUrl);
+        const data = await response.json();
         console.log(data);
         console.log(`hi`);
-        setComments(data)
-      }
-   
-      getComment()
+        setComments(data);
+      };
+
+      getComment();
     } catch (error) {
       console.log(error);
     }
-  }, [commentUrl])
-    
+  }, [commentUrl]);
+
   console.log(comments);
   console.log(`${url}/${id}/comments`);
   return (
     <>
-   <Link to='/' style={{cursor :"pointer"}}> <button>Back to see all posts</button> </Link> 
+      <Link to="/" style={{ cursor: "pointer" }}>
+        {" "}
+        <button>Back to see all posts</button>{" "}
+      </Link>
       <div style={divStyle}>
         <p>User Id : {post.userId}</p>
         <h3> {post.title}</h3>
         <p> {post.body}.</p>
       </div>
       <div>
-        {(comments.length === 0)? <h1>No Comment</h1>:comments.map((comment)=> {
-          return <p>{comment.email}</p>})}
+        <hr/>
+        {comments.length === 0 ? (
+          <h1>No Comment</h1>
+        ) : (
+          comments.map((comment) => {
+            return <p>{comment.email}</p>;
+          })
+        )}
       </div>
     </>
   );
