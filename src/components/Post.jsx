@@ -24,19 +24,14 @@ const Post = ({ data, url }) => {
       const getComment = async () => {
         const response = await fetch(commentUrl);
         const data = await response.json();
-        console.log(data);
-        console.log(`hi`);
         setComments(data);
       };
-
       getComment();
     } catch (error) {
       console.log(error);
     }
   }, [commentUrl]);
 
-  console.log(comments);
-  console.log(`${url}/${id}/comments`);
   return (
     <>
       <Link to="/" style={{ cursor: "pointer" }}>
@@ -49,7 +44,6 @@ const Post = ({ data, url }) => {
         <p> {post.body}.</p>
       </div>
       <div>
-        <hr/>
         {comments.length === 0 ? (
           <h1>No Comment</h1>
         ) : (
