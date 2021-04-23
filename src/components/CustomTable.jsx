@@ -81,7 +81,7 @@ export default function CustomTable({ data, itemsPerPage }) {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Title</StyledTableCell>
+              <StyledTableCell>Posts</StyledTableCell>
               <StyledTableCell align="right">User Id</StyledTableCell>
             </TableRow>
           </TableHead>

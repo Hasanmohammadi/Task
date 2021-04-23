@@ -44,6 +44,7 @@ const Post = ({ data, url }) => {
         <p> {post.body}.</p>
       </div>
       <div>
+        <hr />
         {comments.length === 0 ? (
           <h1>No Comment</h1>
         ) : (
