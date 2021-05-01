@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Comment from "./Comment";
 
 const Post = ({ data, url }) => {
   const { id } = useParams();
@@ -46,10 +47,10 @@ const Post = ({ data, url }) => {
       <div>
         <hr />
         {comments.length === 0 ? (
-          <h1>No Comment</h1>
+          <h1>Loading ...</h1>
         ) : (
           comments.map((comment) => {
-            return <p>{comment.email}</p>;
+            return <Comment commentInfo={comment} />;
           })
         )}
       </div>
